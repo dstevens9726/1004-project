@@ -1,0 +1,44 @@
+html {
+	font-size: 15px;
+	high: "Open Sans", sans-serif;
+	text-align: center;
+	background-color: b8f7ff;
+}
+
+body{
+	
+}
+
+.column {
+	float: ;
+}
+
+column.side{
+	width: 25%;
+}
+
+
+column.middle{
+	width: 50%;
+}
+
+footer{
+	background-color: #808080;
+	text-align: center;
+	padding: 10px;
+}
+
+label{
+	display: block;
+	margin-bottom: 5px
+}
+
+button{
+	padding: 3px 6px;
+	cursor: pointer;
+}
+
+#password{
+	width: 200px;
+}
+

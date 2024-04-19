@@ -1,0 +1,81 @@
+<!DOCTYPE>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		#strength {
+			margin-top: 15px;
+			}
+	</style>
+	<link href="toolkit.css" rel="stylesheet">
+	<title> Security Toolkit </title>
+	<marquee hspace="25%" style="border:black 2px solid" loop="100" scrollamount="3"> A strong password should include uppercase and lowercase letters, numbers and special characters (!£*@), and be longer than 10 characters... &nbsp; &nbsp; &nbsp; Do not share your passwords with anyone... &nbsp; &nbsp; &nbsp; Do not reuse the same password... &nbsp; &nbsp; &nbsp; Keep up to date on data breaches, if you have an account with a service that has been breached, change your password... &nbsp; &nbsp; &nbsp; Use an antivirus... &nbsp; &nbsp; &nbsp; Keep your software up to date... &nbsp; &nbsp;</marquee>
+
+	
+</head>
+
+<body>
+	<div class="Header">
+		<h2>Password strength checker</h2>
+	</div>
+	<label for="password">Enter password here:</label>
+	<input type="password" id="password" onkeyup="checkPwdStrength()">
+	<div id="strength"></div>
+	<script>
+		function checkPwdStrength(){
+			var password = document.getElementById("password").value;
+			var rating = document.getElementById("strength");
+			
+			var strengthColour = "red"; //starting colour
+			var strengthText = "Weak"; //starting text
+			
+			var mediumRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
+			var strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^£&*{}()':;#~<>+=-])(?=.{10,})/;
+		
+			if (strongRegex.test(password)){
+				strengthColour = "green";
+				strengthText = "Strong";
+				}
+			else if (mediumRegex.test(password)){
+				strengthColour = "orange";
+				strengthText = "Moderate";
+				}
+			rating.innerHTML = strengthText;
+			rating.style.color = strengthColour;
+		}
+	</script>
+	
+	<h2>Need a password?</h2>
+	<label for="pwdLength">Enter password length (12-32 characters)</label>
+	<input type="number" id="pwdLength" value="16" min="12" max="32" onchange="updateLength()">
+	<button onclick="genPassword()">Generate</button>
+	<input id="pwd" style="width: 260px">
+	<script>
+		function genPassword(){
+			var length = document.getElementById("pwdLength").value;
+			var pwdCharset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^£&*{}:;()#~|\.,?`'<>-+=";
+			var pwd = "";
+			for(var i = 0; i < length; i++){
+				var charSelect = Math.floor(Math.random() * pwdCharset.length);
+				pwd += pwdCharset[charSelect];
+			}
+			document.getElementById("pwd").value = pwd;
+		}
+		function updateLength(){
+			var lengthInput = document.getElementById("pwdLength");
+			if(lengthInput.value < parseInt(lengthInput.min)){
+				lengthInput.value = lengthInput.min;
+				}
+			else if (lengthInput.value > parseInt(lengthInput.max)){
+				lengthInput.value = lengthInput.max;
+				}
+		}
+	</script>
+</body>
+
+
+
+
+</html>
