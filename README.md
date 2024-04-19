@@ -1,1 +1,2 @@
 # 1004-project
+Contained in this repository is the HTML and CSS files for my COMP1004 project. I chose to create a security toolkit that contains a password generator which randomly generates a string of alphanumeric and special characters for the user to use as a password, and a password strength checker, so that the user can check how strong their current passwords are, and if they should use the generator to create a new one. Also included is a marquee that displays some security tips that are pertinent.
